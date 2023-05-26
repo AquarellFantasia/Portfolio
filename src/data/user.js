@@ -1,16 +1,16 @@
 const INFO = {
 	main: {
-		title: "Reactfolio by truethari",
-		name: "Tharindu N.",
-		email: "mail@tharindu.dev",
+		title: "Portfolio",
+		name: "Eriks Markevics",
+		email: "erick.markevich@gmail.com",
 		logo: "../logo.png",
 	},
 
 	socials: {
 		twitter: "https://twitter.com/",
-		github: "https://github.com/",
-		linkedin: "https://linkedin.com/",
-		instagram: "https://instagram.com/",
+		github: "https://github.com/AquarellFantasia",
+		linkedin: "https://www.linkedin.com/in/eriksmarkevics224342/",
+		instagram: "https://www.instagram.com/aquarellfantasia/",
 		stackoverflow: "https://stackoverflow.com/",
 		facebook: "https://facebook.com/",
 	},
