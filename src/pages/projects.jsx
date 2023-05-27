@@ -31,16 +31,14 @@ const Projects = () => {
 						</div>
 
 						<div className="subtitle projects-subtitle">
-							I've worked on a variety of projects over the years
-							and I'm proud of the progress I've made. Many of
-							these projects are open-source and available for
-							others to explore and contribute to. If you're
-							interested in any of the projects I've worked on,
-							please feel free to check out the code and suggest
-							any improvements or enhancements you might have in
-							mind. Collaborating with others is a great way to
-							learn and grow, and I'm always open to new ideas and
-							feedback.
+							In my spare time I have worked on a variety of projects,
+							which I would want to share to the world.
+							These projects showcase my passion for learning and
+							applying my skills in practical ways. From developing
+							a Telegram scrapper bot, to this portfolio website
+							each project reflects my dedication and creativity.
+							I am thrilled to discuss these projects further and
+							welcome any feedback or inquiries about my work.
 						</div>
 
 						<div className="projects-list">

@@ -35,21 +35,21 @@ const INFO = {
 
 	projects: [
 		{
-			title: "Project 1",
+			title: "Scrapper projects",
 			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
+				"This repository holds 2 scrapper projects. One is for scraping appartment data from a real estate website, and the other is telegram bot notifier of new updates on my favorite websites.",
+			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/python/python.png",
 			linkText: "View Project",
-			link: "https://github.com",
+			link: "https://github.com/AquarellFantasia/scrapper",
 		},
 
 		{
-			title: "Project 2",
+			title: "Master thesis ",
 			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
+				"AI approaches to index Kikuchi diffraction patterns acquired using scanning electron miccroscopy. For this project, after learning the basics of solid state physics, I simulated the diffraction patterns using python and then trained a CNN on those images to index the patterns.",
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/python/python.png",
 			linkText: "View Project",
-			link: "https://github.com",
+			link: "https://github.com/AquarellFantasia/MasterThesis",
 		},
 
 		{
