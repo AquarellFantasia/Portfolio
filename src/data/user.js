@@ -7,7 +7,7 @@ const INFO = {
 	},
 
 	socials: {
-		twitter: "https://twitter.com/",
+		twitter: "https://twitter.com/Aquarell1995",
 		github: "https://github.com/AquarellFantasia",
 		linkedin: "https://www.linkedin.com/in/eriksmarkevics224342/",
 		instagram: "https://www.instagram.com/aquarellfantasia/",
@@ -16,15 +16,15 @@ const INFO = {
 	},
 
 	homepage: {
-		title: "Full-stack web and mobile app developer, and amateur astronaut.",
+		title: "Software Engineer with a passion for brewing tea.",
 		description:
-			"I am a backend developer with expertise in Node.js. I have experience in building scalable, secure and reliable web applications using various frameworks and technologies. I enjoy solving complex problems and learning new skills. I am passionate about creating high-quality code that follows best practices and industry standards. I am always looking for new challenges and opportunities to grow as a developer.",
+			"I specialize in DevOps and Embedded development. I have experince in building CI/CD from the test setups all the way to writing the pipeline configurations for buildding and testing. I thrive on embracing new challenges and have a genuine passion for assisting others.",
 	},
 
 	about: {
-		title: "I’m Tharindu N. I live in Sri Lanka, where I design the future.",
+		title: "I'm a DevOps Engineer with a passion for tea and AI art.",
 		description:
-			"I've worked on a variety of projects over the years and I'm proud of the progress I've made. Many of these projects are open-source and available for others to explore and contribute to. If you're interested in any of the projects I've worked on, please feel free to check out the code and suggest any improvements or enhancements you might have in mind. Collaborating with others is a great way to learn and grow, and I'm always open to new ideas and feedback.",
+			"My name is Eriks, and I made the move to Denmark from Latvia in 2014. Ever since, I have been eagerly absorbing everything I can about digitalization in this new environment. My ultimate goal is to contribute to a better future and make a positive difference in the world. In my free time, I enjoy delving into the fascinating world of teas, experimenting with recipes from various cuisines, and exploring the realm of AI art.",
 	},
 
 	articles: {
