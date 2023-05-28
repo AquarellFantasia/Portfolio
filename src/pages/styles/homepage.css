@@ -92,6 +92,9 @@
 	flex-basis: 600px;
 	padding-top: 30px;
 }
+.homepage-studies {
+	margin-top: 30px;
+}
 
 @media (max-width: 1024px) {
 	.homepage-first-area {
