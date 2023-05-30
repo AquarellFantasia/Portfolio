@@ -16,21 +16,21 @@ const INFO = {
 	},
 
 	homepage: {
-		title: "Software Engineer with a passion for brewing tea.",
+		title: "I'm a DevOps Engineer with a passion for tea and AI art.",
 		description:
 			"I specialize in DevOps and Embedded development. I have experince in building CI/CD from the test setups all the way to writing the pipeline configurations for buildding and testing. I thrive on embracing new challenges and have a genuine passion for assisting others.",
 	},
 
 	about: {
-		title: "I'm a DevOps Engineer with a passion for tea and AI art.",
+		title: "Just a human being.",
 		description:
 			"My name is Eriks, and I made the move to Denmark from Latvia in 2014. Ever since, I have been eagerly absorbing everything I can about digitalization in this new environment. My ultimate goal is to contribute to a better future and make a positive difference in the world. In my free time, I enjoy delving into the fascinating world of teas, experimenting with recipes from various cuisines, and exploring the realm of AI art.",
 	},
 
 	articles: {
-		title: "I'm passionate about pushing the boundaries of what's possible and inspiring the next generation of innovators.",
+		title: "Articles. Hopefully, you'll find them useful.",
 		description:
-			"Chronological collection of my long-form thoughts on programming, leadership, product design, and more.",
+			"I'm sharting my thoughts on programming, leadership, and more on my website in hopes of someone finding them useful. Articles are put in chronological order.",
 	},
 
 	projects: [

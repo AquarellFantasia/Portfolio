@@ -2,10 +2,10 @@ import React from "react";
 
 function article_1() {
 	return {
-		date: "7 May 2023",
-		title: "The Benefits of Cloud Computing",
+		date: "30 May 2023",
+		title: "Website using React and AWS S3.",
 		description:
-			"Cloud computing offers a range of benefits, including cost savings and increased flexibility. Find out why more businesses are turning to the cloud.",
+			"Here you will read about my journey of creating a portfolio website using React and hosting it on AWS S3.",
 		style: `
 				.article-content {
 					display: flex;
@@ -21,33 +21,47 @@ function article_1() {
 		body: (
 			<React.Fragment>
 				<div className="article-content">
-					<div className="paragraph">Content of article 1</div>
-					<img
+					<div className="paragraph">
+						<p>
+							For a while now, I desired to have a personal
+							website. I thought of using Wordpress, but, as a
+							developer, I wanted to have learn new technology and
+							get more control over the website. I tried bootstrap
+							and ASP.NET, but I was not satisfied with the
+							functionality. Then I came across React and I was
+							amazed by its simplicity and functionality.
+						</p>
+						<p>
+							First step was to learn React. I started with
+							tutorials and even bought a course in React +
+							Typescript.
+						</p>
+						<p>
+							Then I searched for some examples of portfolio
+							websites and came across a wonderfull website{" "}
+							<a href="https://reactjsexample.com/">
+								https://reactjsexample.com/
+							</a>{" "}
+							where developers share their projects. I got the inspiration for my website from the
+							developer Tharindu N. Madusanka and created my own.
+						</p>
+						<p>
+							Then I started to think about hosting. It tured out
+							simple to host it on AWS S3 and now, the next step is to add Google Analythics.
+						</p>
+					</div>
+
+					{/* <img
 						src="https://picsum.photos/200/300"
 						alt="random"
 						className="randImage"
-					/>
+					/> */}
 				</div>
 			</React.Fragment>
 		),
 	};
 }
 
-function article_2() {
-	return {
-		date: "7 May 2023",
-		title: "Artificial Intelligence in Healthcare",
-		description:
-			"AI is transforming the healthcare industry, from improving patient outcomes to streamlining operations. Discover the latest applications of this game-changing technology.",
-		style: ``,
-		body: (
-			<React.Fragment>
-				<h1>Content of article 2</h1>
-			</React.Fragment>
-		),
-	};
-}
-
-const myArticles = [article_1, article_2];
+const myArticles = [article_1];
 
 export default myArticles;
