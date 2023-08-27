@@ -47,8 +47,9 @@ function article_1() {
 						</p>
 						<p>
 							Then I started to think about hosting. It tured out
-							simple to host it on AWS S3 and now, the next step is to add Google Analythics.
+							simple to host it on Netlify and now, the next step is to add Google Analythics.
 						</p>
+						<p> Netlify is a great hosting platform. It is free and easy to use. </p>
 					</div>
 
 					{/* <img
