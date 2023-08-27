@@ -1,9 +1,10 @@
 import React from "react";
+import image from "../Articles/ControlNet.png";
 
 function article_1() {
 	return {
 		date: "30 May 2023",
-		title: "Website using React and AWS S3.",
+		title: "Website using React and Netlify.",
 		description:
 			"Here you will read about my journey of creating a portfolio website using React and hosting it on AWS S3.",
 		style: `
@@ -14,8 +15,11 @@ function article_1() {
 				}
 
 				.randImage {
+					display: block;
+					margin-left: auto;
 					align-self: center;
 					outline: 2px solid red;
+					width: 80%;
 				}
 				`,
 		body: (
@@ -42,27 +46,168 @@ function article_1() {
 							<a href="https://reactjsexample.com/">
 								https://reactjsexample.com/
 							</a>{" "}
-							where developers share their projects. I got the inspiration for my website from the
-							developer Tharindu N. Madusanka and created my own.
+							where developers share their projects. I got the
+							inspiration for my website from the developer
+							Tharindu N. Madusanka and created my own.
 						</p>
 						<p>
 							Then I started to think about hosting. It tured out
-							simple to host it on Netlify and now, the next step is to add Google Analythics.
+							simple to host it on Netlify and now, the next step
+							is to add Google Analythics.
 						</p>
-						<p> Netlify is a great hosting platform. It is free and easy to use. </p>
+						<p>
+							{" "}
+							Netlify is a great hosting platform. It is free and
+							easy to use.{" "}
+						</p>
 					</div>
-
-					{/* <img
-						src="https://picsum.photos/200/300"
-						alt="random"
-						className="randImage"
-					/> */}
 				</div>
 			</React.Fragment>
 		),
 	};
 }
 
-const myArticles = [article_1];
+function article_2() {
+	return {
+		date: "27 August 2023",
+		title: "Hosting stable diffusion UIs on GCP.",
+		description:
+			"Step by step instruction on how install stable diffusion UIs on GCP and abuse the 300$ free credit that goofgle is giving out for newly registered users. Create images and train models, like a boss.",
+		style: `
+				.article-content {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+				}
+
+				.article-img {
+					align-self: center;
+					outline: 2px solid grey;
+					display: inline-block;
+					overflow: hidden;
+					width: 60%;
+				}
+
+				.picture-text {
+					text-align: center;
+					font-size: 0.8em;
+					color: grey;
+					width: 60%;
+				}
+
+				`,
+		body: (
+			<React.Fragment>
+				<div className="article-content">
+					<div className="paragraph">
+						<p>
+							Unless you have lived under a rock for the past 2
+							years, you probably have heard about generative
+							models. They are the new hype in the AI community.
+							They are used to generate images, videos, music,
+							text, etc.
+						</p>
+						<p>
+							I spent this year experimenting with generative
+							models for image generation and want to share my
+							experience with you. In this step by step guide you
+							will learn, how to create a VM with hardware, that
+							would cost you thousands of dollars, if you were to
+							create similar setup at home. Then you will learn
+							how to configure this VM and install all the
+							necessary software on it to launch{" "}
+							<a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">
+								AUTOMATIC1111
+							</a>{" "}
+							and{" "}
+							<a href="https://github.com/bmaltais/kohya_ss">
+								Kohya
+							</a>{" "}
+							GUIs.
+						</p>
+						<p>
+							Then I will show you how to install necessary
+							extensions, that will give you much more control of
+							what you are creating.
+						</p>
+					</div>
+					{
+						<img
+							src={image}
+							alt="What is possible with stable diffusion"
+							className="article-img"
+						/>
+					}
+
+					<div class="picture-text">
+						Controlnet guided generated image of a dragon. <br />
+						<b>Prompt:</b> (red dragon, black wings, purple eyes,
+						big teeth , black tongue) crawling on the mountain ,soft
+						light, cinematic light, masterpiece
+					</div>
+				</div>
+				<h1>Step 1: Create a VM in GCP</h1>
+				<p>
+					{" "}
+					First you need to create a google cloud{" "}
+					<a href="https://cloud.google.com/">account</a>.{" "}
+				</p>
+				<p>
+					{" "}
+					At the moment of writing this article, google gives 300$ if
+					credits for 3 months for newely registered users.
+				</p>
+				<h2> Step 1.1: Create a VM</h2>
+				<p>
+					After creating account and heeading to the main page, head
+					over to Compute Engine-&#62;VM instances-&#62;CREATE INSTANE
+				</p>
+				<p> Create a VM with the following parameters: </p>
+				<ul>
+					<li>
+						Region and zone: (<b>Note:</b> different regions and
+						zones have different GPUs available, so select the one
+						that has the GPU you want)
+					</li>
+					<li>Machine configuration:GPUs </li>
+					<li>Machine type: n1-standard-8 (8 vCPUs, 30 GB memory)</li>
+					<li>
+						Boot disk: Deep Learning VM with CUDA 11.8 M110 (
+						<b>Note:</b> You will automatically be offfered to swith
+						the image)
+					</li>
+					<li>Firewall: Allow HTTP traffic</li>
+					<li>Firewall: Allow HTTPS traffic</li>
+					<li>Size (GB): 100+</li>
+				</ul>
+				<p>Click Create and wait for the VM to be created.</p>
+				<p>
+					{" "}
+					<font color="red">
+						It might happen that the region/zone you have selected
+						doesn't have the resources you selected. Then you will
+						receive a notification in the red circle in the red top
+						corner.
+					</font>
+				</p>
+				<h2> Step 1.2: Request quotas </h2>
+				<p>
+					Now, that you have created a VM and you can see it in the list, you will need to request quotas.
+					Google cloud requers you to request the quotas for using certain resources, such as expensive GPUs.
+					To do that, you will need to press request quotas button next to your VM and
+					follow the instruction.
+				</p>
+				<h1>Step2: Firewall settings</h1>
+				<h1>Step3: Install software</h1>
+				<h1>Step4: Install extensions</h1>
+				<h1>Step5: Launch GUIs and create</h1>
+				<h1>Step6: Usefull links</h1>
+			</React.Fragment>
+		),
+	};
+}
+
+
+const myArticles = [article_2, article_1];
 
 export default myArticles;
