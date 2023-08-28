@@ -1,5 +1,6 @@
 import React from "react";
 import image from "../Articles/ControlNet.png";
+import CodeBlock from "react-copy-code";
 
 function article_1() {
 	return {
@@ -70,7 +71,7 @@ function article_1() {
 function article_2() {
 	return {
 		date: "27 August 2023",
-		title: "Hosting stable diffusion UIs on GCP.",
+		title: "Stable diffusion on Google Cloud for free.",
 		description:
 			"Step by step instruction on how install stable diffusion UIs on GCP and abuse the 300$ free credit that goofgle is giving out for newly registered users. Create images and train models, like a boss.",
 		style: `
@@ -94,7 +95,9 @@ function article_2() {
 					color: grey;
 					width: 60%;
 				}
-
+				.Code {
+					font-family: sans-serif;
+				}
 				`,
 		body: (
 			<React.Fragment>
@@ -160,7 +163,10 @@ function article_2() {
 				<h2> Step 1.1: Create a VM</h2>
 				<p>
 					After creating account and heeading to the main page, head
-					over to Compute Engine-&#62;VM instances-&#62;CREATE INSTANE
+					over to Compute Engine-&#62;VM instances-&#62;
+					<a href="https://console.cloud.google.com/compute/instancesAdd">
+						CREATE INSTANCE
+					</a>
 				</p>
 				<p> Create a VM with the following parameters: </p>
 				<ul>
@@ -173,8 +179,8 @@ function article_2() {
 					<li>Machine type: n1-standard-8 (8 vCPUs, 30 GB memory)</li>
 					<li>
 						Boot disk: Deep Learning VM with CUDA 11.8 M110 (
-						<b>Note:</b> You will automatically be offfered to swith
-						the image)
+						<b>Note:</b> You will be automatically offfered to swith
+						to this image)
 					</li>
 					<li>Firewall: Allow HTTP traffic</li>
 					<li>Firewall: Allow HTTPS traffic</li>
@@ -192,13 +198,78 @@ function article_2() {
 				</p>
 				<h2> Step 1.2: Request quotas </h2>
 				<p>
-					Now, that you have created a VM and you can see it in the list, you will need to request quotas.
-					Google cloud requers you to request the quotas for using certain resources, such as expensive GPUs.
-					To do that, you will need to press request quotas button next to your VM and
-					follow the instruction.
+					Now, that you have created a VM and you can see it in the
+					list, you will need to request quotas. Google cloud requers
+					you to request the quotas for using certain resources, such
+					as expensive GPUs. To do that, you will need to press
+					request quotas button next to your VM and follow the
+					instruction.
 				</p>
-				<h1>Step2: Firewall settings</h1>
+				<h2>Step 1.3: Firewall settings</h2>
+				<p>
+					{" "}
+					Now you need to configure firewall settings, so that only
+					you will be able to use the GUI.
+				</p>
+				<p>
+					<ol>
+						<li>
+							{" "}
+							Head over to VPC network-&#62;Firewall-&#62;
+							<a href="https://console.cloud.google.com/net-security/firewall-manager/firewall-policies/add">
+								CREATE FIREWALL RULE
+							</a>{" "}
+						</li>
+						<li>
+							{" "}
+							Enter the following parameters:
+							<ul>
+								<li>
+									Target tags: http-server; https-server;
+									sd-web-ui;
+								</li>
+								<li>
+									Protocols and ports: Specified protocols and
+									ports: TCP: 7860-7869
+								</li>
+								<li>
+									Source IPv4 ranges: ask google "what is my
+									ip"
+								</li>
+							</ul>
+						</li>
+						Enter the name and description and press create.
+						<li>
+							Go back to VM instances and click on your VM. Then
+							press edit. Then, at the Network tags, enter the
+							tags we have used in the previous step: http-server;
+							https-server; sd-web-ui; and press save.
+						</li>
+					</ol>
+				</p>
+				<p> Now your VM is only accessible from the internet by you.</p>
+
 				<h1>Step3: Install software</h1>
+				<p>
+					Now it is time for you to install all the necessary software.<br/>
+					Start your VM and wait until it is ready. Then press SSH and you will
+					be redirected to the terminal of your VM.
+				</p>
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>
+							{`
+const testData = "Test Data";
+
+const testFunc = data => {
+  alert(data);
+}
+
+testFunc(testData);
+              `}
+						</code>
+					</pre>
+				</CodeBlock>
 				<h1>Step4: Install extensions</h1>
 				<h1>Step5: Launch GUIs and create</h1>
 				<h1>Step6: Usefull links</h1>
