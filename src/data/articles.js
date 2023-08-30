@@ -97,6 +97,11 @@ function article_2() {
 				}
 				.Code {
 					font-family: sans-serif;
+					padding: 1%;
+					background-color: #040D12;
+					color: #93B1A6;
+					font-size: 0.75em;
+					outline: 5px solid #5C8374;
 				}
 				`,
 		body: (
@@ -251,25 +256,146 @@ function article_2() {
 
 				<h1>Step3: Install software</h1>
 				<p>
-					Now it is time for you to install all the necessary software.<br/>
-					Start your VM and wait until it is ready. Then press SSH and you will
-					be redirected to the terminal of your VM.
+					Now it is time for you to install all the necessary
+					software.
+					<br />
+					Start your VM and wait until it is ready. Then press SSH and
+					you will be redirected to the terminal of your VM. <br />
+					When asked to install nvidia drivers, say no.
+				</p>
+				<h2>Step3.1: Install prerequisits</h2>
+				<p>
+					First you need to install necessary libraries, through the
+					shell. They will be required later for things like
+					installing GUIs, building pyhton, etc.
+				</p>
+
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>
+							{`sudo apt-get install gdebi-core
+sudo apt-get install tk-dev
+sudo apt-get build-dep python
+sudo apt-get -y install libgdbm-dev libsqlite3-dev libssl-dev zlib1g-dev
+sudo apt-get -y install liblzma-dev lzma libbz2-dev libffi-dev
+sudo apt-get build-dep python`}
+						</code>
+					</pre>
+				</CodeBlock>
+				<p> Install python 3.10.10 from source. </p>
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>
+							{`export PYTHON_VERSION=3.10.10
+export PYTHON_MAJOR=3
+
+curl -O https://www.python.org/ftp/python/\${PYTHON_VERSION}/Python-\${PYTHON_VERSION}.tgz
+tar -xvzf Python-\${PYTHON_VERSION}.tgz
+cd Python-\${PYTHON_VERSION}
+
+# add this to rebuild python
+./configure \\
+    --prefix=/opt/python/\${PYTHON_VERSION} \\
+    --enable-shared \\
+    --enable-optimizations \\
+    --enable-ipv6 \\
+    LDFLAGS=-Wl,-rpath=/opt/python/\${PYTHON_VERSION}/lib,--disable-new-dtags
+
+make
+sudo make install
+
+curl -O https://bootstrap.pypa.io/get-pip.py
+sudo /opt/python/\${PYTHON_VERSION}/bin/python\${PYTHON_MAJOR} get-pip.py
+
+/opt/python/\${PYTHON_VERSION}/bin/python\${PYTHON_MAJOR} --version`}
+						</code>
+					</pre>
+				</CodeBlock>
+				<p> Then add the path to the .profile </p>
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>
+							{`export "PATH=/opt/python/3.10.10/bin/:$PATH"
+alias python="/opt/python/3.10.10/bin/python3.10"
+source .profile`}
+						</code>
+					</pre>
+				</CodeBlock>
+				<p> Install NVIDIA drivers</p>
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>
+							{`curl https://raw.githubusercontent.com/GoogleCloudPlatform/compute-gpu-installation/main/linux/install_gpu_driver.py \\
+  --output install_gpu_driver.py
+sudo /opt/deeplearning/install-driver.sh`}
+						</code>
+					</pre>
+				</CodeBlock>
+				<h2>Step3.2: Install GUIs</h2>
+				<p> First install stable diffusion AUTOMATIC1111 GUI. </p>
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>
+							{`bash <(wget -qO- https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh) \\
+  --listen --enable-insecure-extension-access`}
+						</code>
+					</pre>
+				</CodeBlock>
+				<p> Then add a dependency: </p>
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>
+							{`LD_LIBRARY_PATH=/usr/local/lib
+export LD_LIBRARY_PATH`}
+						</code>
+					</pre>
+				</CodeBlock>
+
+				<p> Then install Kohya GUI. </p>
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>
+							{`git clone https://github.com/bmaltais/kohya_ss.git
+cd kohya_ss
+chmod +x ./setup.sh
+./setup.sh`}
+						</code>
+					</pre>
+				</CodeBlock>
+				<p>
+					{" "}
+					<b>Configurations! </b> Now you have installed both GUIs,
+					that will be necessary for you to create images. Now you can
+					launch them.
+				</p>
+				<p>
+					{" "}
+					To launch AUTOMATIC1111 or Kohya, go to the
+					stable-diffusion-webui directory and run:{" "}
 				</p>
 				<CodeBlock highlight className="Code">
 					<pre style={{ textAlign: "left" }}>
 						<code>
-							{`
-const testData = "Test Data";
+							{`# AUTOMATIC1111
+./webui.sh --listen --enable-insecure-extension-access --xformers
 
-const testFunc = data => {
-  alert(data);
-}
-
-testFunc(testData);
-              `}
+# Kohya
+./gui.sh --headless --listen 0.0.0.0`}
 						</code>
 					</pre>
 				</CodeBlock>
+				<p>
+					{" "}
+					Now you can access the GUIs from your browser. To that, go
+					to your VMs and copy "External IP", then enter it into the
+					browser as x.x.x.x:7860, where x.x.x.x is external ip. <br />
+					<font color="red">
+						Note: you will need to add the port number 7860, because it is the port,
+						that the GUIs are listening to. <br />
+						If you you opened both GUIs, then you will need to use different 7860 and 7861 ports for
+						the first and second GUIs in respective opening order.
+					</font>
+				</p>
 				<h1>Step4: Install extensions</h1>
 				<h1>Step5: Launch GUIs and create</h1>
 				<h1>Step6: Usefull links</h1>
