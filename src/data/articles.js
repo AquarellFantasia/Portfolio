@@ -71,7 +71,7 @@ function article_1() {
 function article_2() {
 	return {
 		date: "27 August 2023",
-		title: "Stable diffusion on Google Cloud for free.",
+		title: "3000$ worth Stable Diffusion setup on Google Cloud for free.",
 		description:
 			"Step by step instruction on how install stable diffusion UIs on GCP and abuse the 300$ free credit that goofgle is giving out for newly registered users. Create images and train models, like a boss.",
 		style: `
@@ -332,7 +332,27 @@ sudo /opt/deeplearning/install-driver.sh`}
 					</pre>
 				</CodeBlock>
 				<h2>Step3.2: Install GUIs</h2>
-				<p> First install stable diffusion AUTOMATIC1111 GUI. </p>
+				<p>
+					{" "}
+					Stable diffusion has many GUIs for different purposes:
+					<ul>
+						<li>
+							AUTOMATIC1111 - for image creation and model
+							training
+						</li>
+						<li>Kohya - best for Lora trining</li>
+						<li>
+							ComfyUI - not so comfy and confusing tool for what
+							can be done with AAUTOMATIC1111
+						</li>
+						<li>and more ...</li>
+					</ul>
+				</p>
+				<p>
+					{" "}
+					We are going to install AUTOMATIC1111 and Kohya. First install stable
+					diffusion AUTOMATIC1111 GUI.{" "}
+				</p>
 				<CodeBlock highlight className="Code">
 					<pre style={{ textAlign: "left" }}>
 						<code>
@@ -365,7 +385,7 @@ chmod +x ./setup.sh
 				<p>
 					{" "}
 					<b>Configurations! </b> Now you have installed both GUIs,
-					that will be necessary for you to create images. Now you can
+					that will be necessary for you to create images and train the models. Now you can
 					launch them.
 				</p>
 				<p>
@@ -388,22 +408,75 @@ chmod +x ./setup.sh
 					{" "}
 					Now you can access the GUIs from your browser. To that, go
 					to your VMs and copy "External IP", then enter it into the
-					browser as x.x.x.x:7860, where x.x.x.x is external ip. <br />
+					browser as x.x.x.x:7860, where x.x.x.x is external ip.{" "}
+					<br />
 					<font color="red">
-						Note: you will need to add the port number 7860, because it is the port,
-						that the GUIs are listening to. <br />
-						If you you opened both GUIs, then you will need to use different 7860 and 7861 ports for
-						the first and second GUIs in respective opening order.
+						Note: you will need to add the port number 7860, because
+						it is the port, that the GUIs are listening to. <br />
+						If you you opened both GUIs, then you will need to use
+						different 7860 and 7861 ports for the first and second
+						GUIs in respective opening order.
 					</font>
 				</p>
 				<h1>Step4: Install extensions</h1>
+				<p>
+					Now you need to install extensions for AAUTOMATIC1111.{" "}
+					<br />
+					To do that:
+					<ol>
+						<li>Launh AUTOMATIC1111 GUI </li>
+						<li>Go to the Extensions tab </li>
+						<li>Press "Available" </li>
+						<li>In "Extension index URL" leave the existing URL</li>
+						<li>Press "Load from"</li>
+						<li>
+							Install following extensions:{" "}
+							<ul>
+								<li>
+									<b>stable-diffusion-webui-images-browser</b>{" "}
+									- The most important tool. Keeps the history
+									of your images with prompts{" "}
+								</li>
+								<li>
+									<b>sd-civitai-browser-plus</b> - lets you
+									get models, Loras and textual inversions
+									easier
+								</li>
+								<li>
+									<b>sd-webui-controlnet</b> - Main tool to
+									guide the shape of your image{" "}
+								</li>
+								<li>
+									<b>sd-webui-photopea-embed</b> - inbuilt
+									pgotoshop-like tool
+								</li>
+								<li>
+									<b>sd-webui-segment-anything</b> - tool that
+									segments an image ainto pieces, so yuoui can
+									replace individual image piecees
+								</li>
+								<li>
+									<b>sd_dreambooth_extension</b> - Allows you
+									to retrain the model with your own images
+								</li>
+							</ul>
+						</li>
+					</ol>
+				</p>
+
+				<p>
+					If you can't fint one the given tools, google them. Then you
+					will find a URL to enter in a step 4. Or you will find
+					github repository that you will need to clone into
+					&#60;stable-diffusion-webui project path&#62;/extensions
+					through the SSH.
+				</p>
 				<h1>Step5: Launch GUIs and create</h1>
 				<h1>Step6: Usefull links</h1>
 			</React.Fragment>
 		),
 	};
 }
-
 
 const myArticles = [article_2, article_1];
 
