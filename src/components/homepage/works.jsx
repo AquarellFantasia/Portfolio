@@ -15,6 +15,19 @@ const Works = () => {
 					<div className="works-body">
 						<div className="work">
 							<img
+								src="./WSA.png"
+								alt="WS Audiology"
+								className="work-image"
+							/>
+							<div className="work-title">WS Audiology</div>
+							<div className="work-subtitle">
+								DevOps Engineer
+							</div>
+							<div className="work-duration">2023 - Now</div>
+						</div>
+
+						<div className="work">
+							<img
 								src="./Zendesk.png"
 								alt="Zendesk"
 								className="work-image"
@@ -33,9 +46,7 @@ const Works = () => {
 								className="work-image"
 							/>
 							<div className="work-title">Danfoss Drives</div>
-							<div className="work-subtitle">
-								DevOps Engineer
-							</div>
+							<div className="work-subtitle">DevOps Engineer</div>
 							<div className="work-duration">2018 - 2020</div>
 						</div>
 
@@ -45,7 +56,9 @@ const Works = () => {
 								alt="dansk ingenorservice"
 								className="work-image"
 							/>
-							<div className="work-title">Dansk IngeniørService</div>
+							<div className="work-title">
+								Dansk IngeniørService
+							</div>
 							<div className="work-subtitle">
 								Intern/student worker
 							</div>
