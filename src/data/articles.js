@@ -1,5 +1,7 @@
 import React from "react";
-import image from "../Articles/ControlNet.png";
+import ControlNetExampleImg from "../Articles/ControlNet.png";
+import AccelerationSetup from "../Articles/AccelerationSetup.png";
+import RequestQuota from "../Articles/RequestQuota.png";
 import CodeBlock from "react-copy-code";
 
 function article_1() {
@@ -20,7 +22,6 @@ function article_1() {
 					margin-left: auto;
 					align-self: center;
 					outline: 2px solid red;
-					width: 80%;
 				}
 				`,
 		body: (
@@ -86,7 +87,7 @@ function article_2() {
 					outline: 2px solid grey;
 					display: inline-block;
 					overflow: hidden;
-					width: 60%;
+					width: 100%;
 				}
 
 				.picture-text {
@@ -141,9 +142,12 @@ function article_2() {
 					</div>
 					{
 						<img
-							src={image}
+							src={ControlNetExampleImg}
 							alt="What is possible with stable diffusion"
 							className="article-img"
+							style={{
+								width: "80%",
+							}}
 						/>
 					}
 
@@ -209,6 +213,14 @@ function article_2() {
 					as expensive GPUs. To do that, you will need to press
 					request quotas button next to your VM and follow the
 					instruction.
+					<img
+						src={RequestQuota}
+						alt="Request quotas notification screenshot"
+						className="article-img"
+						style={{
+							width: "60%",
+						}}
+					/>
 				</p>
 				<h2>Step 1.3: Firewall settings</h2>
 				<p>
@@ -273,9 +285,9 @@ function article_2() {
 				<CodeBlock highlight className="Code">
 					<pre style={{ textAlign: "left" }}>
 						<code>
-							{`sudo apt-get install gdebi-core
+							{`sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install gdebi-core
 sudo apt-get install tk-dev
-sudo apt-get build-dep python
 sudo apt-get -y install libgdbm-dev libsqlite3-dev libssl-dev zlib1g-dev
 sudo apt-get -y install liblzma-dev lzma libbz2-dev libffi-dev
 sudo apt-get build-dep python`}
@@ -317,6 +329,7 @@ sudo /opt/python/\${PYTHON_VERSION}/bin/python\${PYTHON_MAJOR} get-pip.py
 						<code>
 							{`export "PATH=/opt/python/3.10.10/bin/:$PATH"
 alias python="/opt/python/3.10.10/bin/python3.10"
+cd ..
 source .profile`}
 						</code>
 					</pre>
@@ -350,17 +363,29 @@ sudo /opt/deeplearning/install-driver.sh`}
 				</p>
 				<p>
 					{" "}
-					We are going to install AUTOMATIC1111 and Kohya. First install stable
-					diffusion AUTOMATIC1111 GUI.{" "}
+					We are going to install AUTOMATIC1111 and Kohya. First
+					install stable diffusion AUTOMATIC1111 GUI.{" "}
 				</p>
 				<CodeBlock highlight className="Code">
 					<pre style={{ textAlign: "left" }}>
 						<code>
-							{`bash <(wget -qO- https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh) \\
-  --listen --enable-insecure-extension-access`}
+							{`wget -q https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh
+chmod +x webui.sh
+./webui.sh`}
 						</code>
 					</pre>
 				</CodeBlock>
+				<p> Then stop the process with CTRL+C and type: </p>
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>{`nano stable-diffusion-webui/webui-user.sh`}</code>
+					</pre>
+				</CodeBlock>
+				<p> and uncomment following lines: </p>
+				<ul>
+					<li># export ACCELERATE="True"</li>
+					<li># export NO_TCMALLOC="True"</li>
+				</ul>
 				<p> Then add a dependency: </p>
 				<CodeBlock highlight className="Code">
 					<pre style={{ textAlign: "left" }}>
@@ -383,10 +408,33 @@ chmod +x ./setup.sh
 					</pre>
 				</CodeBlock>
 				<p>
+					Affter the installation is done, press CTRL+C to stop the
+					process. Then go to the kohya_ss directory and run the
+					following commands:
+				</p>
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>
+							{`source venv/bin/activate
+accelerate config`}
+						</code>
+					</pre>
+				</CodeBlock>
+				<p>
+					Then you will need to setup acceleration parameters. Answer
+					as shown in the picture.
+				</p>
+				<img
+					src={AccelerationSetup}
+					alt="Acceleration setup choices - screenshot"
+					className="article-img"
+				/>
+				<p>
 					{" "}
-					<b>Configurations! </b> Now you have installed both GUIs,
-					that will be necessary for you to create images and train the models. Now you can
-					launch them.
+					Restart the machine to avoid errors, and{" "}
+					<b>configurations! </b> Now you have installed both GUIs,
+					that will be necessary for you to create images and train
+					the models. Now you can launch them.
 				</p>
 				<p>
 					{" "}
@@ -430,7 +478,8 @@ chmod +x ./setup.sh
 						<li>In "Extension index URL" leave the existing URL</li>
 						<li>Press "Load from"</li>
 						<li>
-							Install following extensions:{" "}
+							Install following extensions and restart UI through
+							Settings-&gt;Reload UI:{" "}
 							<ul>
 								<li>
 									<b>stable-diffusion-webui-images-browser</b>{" "}
@@ -443,8 +492,28 @@ chmod +x ./setup.sh
 									easier
 								</li>
 								<li>
-									<b>sd-webui-controlnet</b> - Main tool to
-									guide the shape of your image{" "}
+									<b>sd-webui-controlnet</b> - This tool will
+									allow you to guide the image shapes and
+									compositions. <br />
+									To install it, go to the ControlNet{" "}
+									<a href="https://github.com/Mikubill/sd-webui-controlnet">
+										repo
+									</a>{" "}
+									and follow the instructions.
+									<br />
+									To download controlnet models, go to the
+									"stable-diffusion-webui/extensions/sd-webui-controlnet/models"
+									and run:
+									<CodeBlock highlight className="Code">
+										<pre style={{ textAlign: "left" }}>
+											<code>
+												{`git clone https://huggingface.co/lllyasviel/ControlNet-v1-1
+mv ControlNet-v1-1/*.pth .
+sudo rm -r ControlNet-v1-1`}
+											</code>
+										</pre>
+									</CodeBlock>
+									which will download all the necessary models needed for ControlNet.
 								</li>
 								<li>
 									<b>sd-webui-photopea-embed</b> - inbuilt
