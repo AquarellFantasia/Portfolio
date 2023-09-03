@@ -286,7 +286,7 @@ function article_2() {
 					<pre style={{ textAlign: "left" }}>
 						<code>
 							{`sudo apt-get update && sudo apt-get upgrade
-sudo apt-get install gdebi-core
+sudo apt-get install gdebi-core git-lfs
 sudo apt-get install tk-dev
 sudo apt-get -y install libgdbm-dev libsqlite3-dev libssl-dev zlib1g-dev
 sudo apt-get -y install liblzma-dev lzma libbz2-dev libffi-dev
@@ -513,7 +513,8 @@ sudo rm -r ControlNet-v1-1`}
 											</code>
 										</pre>
 									</CodeBlock>
-									which will download all the necessary models needed for ControlNet.
+									which will download all the necessary models
+									needed for ControlNet.
 								</li>
 								<li>
 									<b>sd-webui-photopea-embed</b> - inbuilt
@@ -541,6 +542,56 @@ sudo rm -r ControlNet-v1-1`}
 					through the SSH.
 				</p>
 				<h1>Step5: Launch GUIs and create</h1>
+
+				<p>
+					As a first step, go to{" "}
+					<href src="https://civitai.com/">https://civitai.com/</href>
+					. This is a website that hosts models from independant
+					artists. You can filter the models to stable diffusion
+					version 1.5 and by model type that you want to get. To use
+					those models you will need to download them into the correct
+					directories. You will have multiple options, but for the
+					begginers, I would recommend to start with the following
+					models:
+				</p>
+				<ul>
+					<li>
+						{" "}
+						Checkpoints(base models) - the main models which have
+						the biggest size and have the biggest effect on the
+						images. For example realistic photo model, without any
+						other models, will only produce photos. The more models
+						go to the
+						"~/stable-diffusion-webui/models/Stable-diffusion"
+						directory and will have ".cpt" or ".safetensor"
+						extensions.{" "}
+					</li>
+					<li>
+						{" "}
+						Loras - are smaller size models which are having
+						influence on the base models. Mostly it is used to train
+						charracters. For example, if you use a realistic photo
+						model and Mario charracter Lora, you will get a
+						realistic photo of Mario. Loras are located in the
+						"~/stable-diffusion-webui/models/Lora" directory and
+						have ".safetensors" extension.
+					</li>
+					<li>
+						{" "}
+						Textual inversions - are models that are used to invert
+						the text into the image. They work similarly to the
+						Loras, but have less significant effect on the image.
+						You can use combination of them to fine tune your image.
+					</li>
+				</ul>
+
+				<p>Launch AUTOMATIC1111 and you will see the following view:</p>
+				{/* TODO: add image */}
+				<p>
+					{" "}
+					To create an Image, you will need to create the prompt and
+					negative prompt{" "}
+				</p>
 				<h1>Step6: Usefull links</h1>
 			</React.Fragment>
 		),
