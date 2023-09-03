@@ -77,7 +77,7 @@ function article_1() {
 
 function article_2() {
 	return {
-		date: "27 August 2023",
+		date: "4 September 2023",
 		title: "3000$ worth Stable Diffusion setup on Google Cloud for free.",
 		description:
 			"Step by step instruction on how install stable diffusion UIs on GCP and abuse the 300$ free credit that goofgle is giving out for newly registered users. Create images and train models, like a boss.",
