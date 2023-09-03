@@ -1,8 +1,14 @@
 import React from "react";
+import CodeBlock from "react-copy-code";
+
+// Images
 import ControlNetExampleImg from "../Articles/ControlNet.png";
 import AccelerationSetup from "../Articles/AccelerationSetup.png";
 import RequestQuota from "../Articles/RequestQuota.png";
-import CodeBlock from "react-copy-code";
+import Smoking from "../Articles/smoking.png";
+import ControlSmoke from "../Articles/ControlNetSmoke.png";
+import Result from "../Articles/result.png";
+import Preview from "../Articles/preview.png";
 
 function article_1() {
 	return {
@@ -103,6 +109,14 @@ function article_2() {
 					color: #93B1A6;
 					font-size: 0.75em;
 					outline: 5px solid #5C8374;
+				}
+				.Prompt {
+					font-family: sans-serif;
+					padding: 1%;
+					background-color: #F0F0F0;
+					color: #000000;
+					font-size: 0.8em;
+					outline: 5px solid #FFC6AC;
 				}
 				`,
 		body: (
@@ -545,8 +559,8 @@ sudo rm -r ControlNet-v1-1`}
 
 				<p>
 					As a first step, go to{" "}
-					<href src="https://civitai.com/">https://civitai.com/</href>
-					. This is a website that hosts models from independant
+					<a href="https://civitai.com/">https://civitai.com/</a>.
+					This is a website that hosts models from independant
 					artists. You can filter the models to stable diffusion
 					version 1.5 and by model type that you want to get. To use
 					those models you will need to download them into the correct
@@ -590,7 +604,124 @@ sudo rm -r ControlNet-v1-1`}
 				<p>
 					{" "}
 					To create an Image, you will need to create the prompt and
-					negative prompt{" "}
+					negative prompt to desdcribe what you want and dont want to
+					see in an image. <br />
+					for this exampole, we will create a prompt of an old man,
+					smoking a cigarette. Then take a pose from another photo and
+					apply it to ours. <br />
+				</p>
+				<h4> Download models </h4>
+				<p>
+					The base model offered by stable diffusion is a not great.
+					It lacks consistency and variet, so we will download a
+					better one from civitai.com. <br />
+					<br />
+					For this example, I will use this{" "}
+					<a href="https://civitai.com/models/46294/diffusion-brush-everything-sfw-nsfw-all-purpose-checkpoint-nuclear-diffusion-anime-hybrid">
+						model
+					</a>{" "}
+					ands this{" "}
+					<a href="https://civitai.com/models/4935/smoking">Lora.</a>
+					from the fo,however, feel free toi experioment with your own
+					models. <br />
+					To download the models, click on the model you like, right
+					click on Download button, copy link and copy the number id
+					of the model, by the end of the link. <br />
+					Then open your SSH terminal and go to directory to download
+					the model: <br />
+				</p>
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>{`# Go to the base model directory
+cd ~/stable-diffusion-webui/models/Stable-diffusion
+
+# And download the model using
+# wget https://civitai.com/api/download/models/{modelVersionId} --content-disposition
+# Where {modelVersionId} is the number id of the model you want to download
+wget https://civitai.com/api/download/models/50908 --content-disposition
+`}</code>
+					</pre>
+				</CodeBlock>
+				<p> Do the same for the Lora model: </p>
+				<CodeBlock highlight className="Code">
+					<pre style={{ textAlign: "left" }}>
+						<code>{`# Go to the Lora directory
+cd ~/stable-diffusion-webui/models/Lora
+
+# Download our Lora
+wget https://civitai.com/api/download/models/5687 --content-disposition`}</code>
+					</pre>
+				</CodeBlock>
+				<h4>Create a prompt</h4>
+				<p>
+					Now that you have downloaded models, start your
+					AUTOMATIC1111 GUI, or if it is already running, go to
+					Settings-&#62;Reload UI. <br />
+					Then select a Stable Diffusion checkpoint(base model) to be
+					"diffusionBrushEverythingSFWNSFWAll_v10.safetensors" on the
+					top left corner. <br />
+					Then go to txt2img tab and enter a prompt which will include
+					our Lora "&#8249;lora:smoking_ok:1&#x203A;", where 1 is a
+					degree to which you want your image to be affected by Lora.{" "}
+					on civitai and copy the prompt{" "}
+					<CodeBlock highlight className="Prompt">
+						<pre style={{ textAlign: "left" }}>
+							<code>{`a portrait of an old man, smoking cigarette (smoking:1.2),
+beautiful painting with highly detailed face by greg rutkowski and magali villanueve,  <lora:smoking_ok:1>`}</code>
+						</pre>
+					</CodeBlock>
+					And a negative prompt:
+					<CodeBlock highlight className="Prompt">
+						<pre style={{ textAlign: "left" }}>
+							<code>{`young man, blurry, ugly`}</code>
+						</pre>
+					</CodeBlock>
+					<b>Tip:</b> If you want to learn how to write prompts and
+					learn best prompts for speciffic models, go exampole images
+					on civitai.com and copy the prompt.
+					<br />
+					Then, down in the settings, select the "Batch count" to be
+					4, to have bigger variation of images. <br />
+					Then press "Generate" and wait for the images to be
+					generated. <br />
+					<b>Congratulations!</b> You have created your first 4
+					images.
+					<img
+						src={Smoking}
+						alt="4 images, generated by me"
+						className="article-img"
+					/>
+				</p>
+				<h4> ControlNet pose</h4>
+				<p>
+					Now we will add a pose to our image.
+					<br />
+					To do that, leave all the setting from the previous step the
+					same. Then go to the ControlNet tab and enable it. <br />
+					Then save this image.</p>
+					<img
+						src={ControlSmoke}
+						alt="To be used to copy pose by ControlNet"
+						className="article-img"
+						style={{ width: "50%" }}
+					/>
+					<p>Then go to Single image tab and select this image there.{" "}
+					<br />
+					Lastly, select "Depth" as "Control Type" and press generate.{" "}
+					<br />
+					<img
+						src={Result}
+						alt="Result of all the techniques"
+						className="article-img"
+					/>
+					<b>PS.</b> You preview the the pose, by clicking on a little
+					bomb icon betweeen the preprocessoer and the Model.
+					<img
+						src={Preview}
+						alt="Result of all the techniques"
+						className="article-img"
+						style={{ width: "50%" }}
+					/>
 				</p>
 				<h1>Step6: Usefull links</h1>
 			</React.Fragment>
