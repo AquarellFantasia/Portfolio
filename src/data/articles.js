@@ -698,14 +698,16 @@ beautiful painting with highly detailed face by greg rutkowski and magali villan
 					<br />
 					To do that, leave all the setting from the previous step the
 					same. Then go to the ControlNet tab and enable it. <br />
-					Then save this image.</p>
-					<img
-						src={ControlSmoke}
-						alt="To be used to copy pose by ControlNet"
-						className="article-img"
-						style={{ width: "50%" }}
-					/>
-					<p>Then go to Single image tab and select this image there.{" "}
+					Then save this image.
+				</p>
+				<img
+					src={ControlSmoke}
+					alt="To be used to copy pose by ControlNet"
+					className="article-img"
+					style={{ width: "50%" }}
+				/>
+				<p>
+					Then go to Single image tab and select this image there.{" "}
 					<br />
 					Lastly, select "Depth" as "Control Type" and press generate.{" "}
 					<br />
@@ -723,7 +725,44 @@ beautiful painting with highly detailed face by greg rutkowski and magali villan
 						style={{ width: "50%" }}
 					/>
 				</p>
-				<h1>Step6: Usefull links</h1>
+				<h1>Usefull links</h1>
+				<ul>
+					<li>
+						<a href="https://www.youtube.com/watch?v=j-So4VYTL98">
+							Video
+						</a>{" "}
+						explaining on how to train your own Lora using Kohya ss
+					</li>
+					<li>
+						<a href="https://www.birme.net/?rename=xxxxx"> Tool</a>{" "}
+						that allows you to prepare images for training Lora.
+					</li>
+					<li>
+						<a href="https://app.posemy.art/"> Tool</a>, rhat allows
+						you to create poses for ControlNet.
+					</li>
+					<li>
+						<a href="https://www.youtube.com/watch?v=UgVOQTjahxc">
+							{" "}
+							Video
+						</a>
+						, on how to fix the hands on the images, since it is the
+						weakest part of the stable diffusion.
+					</li>
+					<li>
+						<a href="https://www.youtube.com/watch?v=z6Xwh9G24uw">
+							{" "}
+							Video
+						</a>{" "}
+						on more complex compositions for the images.
+					</li>
+					<li>
+						<a href="https://www.youtube.com/watch?v=SpuYEB_nZW0">
+							{" "}
+							Video
+						</a> on how to use Photopea(photoshoplike tool listed in extension list)
+					</li>
+				</ul>
 			</React.Fragment>
 		),
 	};
