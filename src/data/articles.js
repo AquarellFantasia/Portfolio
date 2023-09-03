@@ -78,7 +78,7 @@ function article_1() {
 function article_2() {
 	return {
 		date: "4 September 2023",
-		title: "3000$ worth Stable Diffusion setup on Google Cloud for free.",
+		title: "Save 3000$ on hardware, by running Stable Diffusion setup on Google Cloud virtual machines for free",
 		description:
 			"Step by step instruction on how install stable diffusion UIs on GCP and abuse the 300$ free credit that goofgle is giving out for newly registered users. Create images and train models, like a boss.",
 		style: `
@@ -131,27 +131,34 @@ function article_2() {
 							text, etc.
 						</p>
 						<p>
-							I spent this year experimenting with generative
-							models for image generation and want to share my
-							experience with you. In this step by step guide you
-							will learn, how to create a VM with hardware, that
-							would cost you thousands of dollars, if you were to
-							create similar setup at home. Then you will learn
-							how to configure this VM and install all the
-							necessary software on it to launch{" "}
-							<a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">
-								AUTOMATIC1111
-							</a>{" "}
-							and{" "}
-							<a href="https://github.com/bmaltais/kohya_ss">
-								Kohya
-							</a>{" "}
-							GUIs.
+							This year, I explored different generative models
+							for image creation and I want to share what I
+							learned with you. In this guide, you will discover
+							how to set up a virtual machine with hardware that
+							would be very expensive to have at home. You will
+							also learn how to configure this machine and install
+							the software you need to run it. By the way, Google
+							Cloud offers a $300 trial for three months, so you
+							can try it out for free.
 						</p>
+						<font color="red">
+							<b>
+								300$ is enough to do do almost endless
+								generation of images, given that you stop the
+								virtual machine between the sessions.
+							</b>
+						</font>{" "}
 						<p>
 							Then I will show you how to install necessary
 							extensions, that will give you much more control of
 							what you are creating.
+							<br />
+							<b>Note:</b> This guide covers pretty advanced setup
+							and will give you a lot of control over the image
+							creation and training process. <br />
+							However, if you are a beginner, I would recommend
+							you to start with running the stable diffusion in
+							Google Colab. <br />
 						</p>
 					</div>
 					{
@@ -185,7 +192,7 @@ function article_2() {
 				</p>
 				<h2> Step 1.1: Create a VM</h2>
 				<p>
-					After creating account and heeading to the main page, head
+					After creating account and heading to the main page, head
 					over to Compute Engine-&#62;VM instances-&#62;
 					<a href="https://console.cloud.google.com/compute/instancesAdd">
 						CREATE INSTANCE
@@ -199,6 +206,7 @@ function article_2() {
 						that has the GPU you want)
 					</li>
 					<li>Machine configuration:GPUs </li>
+					<li>GPU: L4  (which is equivalent to rtx4090 and costs 2000$ alone)</li>
 					<li>Machine type: n1-standard-8 (8 vCPUs, 30 GB memory)</li>
 					<li>
 						Boot disk: Deep Learning VM with CUDA 11.8 M110 (
@@ -738,7 +746,7 @@ beautiful painting with highly detailed face by greg rutkowski and magali villan
 						that allows you to prepare images for training Lora.
 					</li>
 					<li>
-						<a href="https://app.posemy.art/"> Tool</a>, rhat allows
+						<a href="https://app.posemy.art/"> Tool</a>, that allows
 						you to create poses for ControlNet.
 					</li>
 					<li>
@@ -760,7 +768,9 @@ beautiful painting with highly detailed face by greg rutkowski and magali villan
 						<a href="https://www.youtube.com/watch?v=SpuYEB_nZW0">
 							{" "}
 							Video
-						</a> on how to use Photopea(photoshoplike tool listed in extension list)
+						</a>{" "}
+						on how to use Photopea(photoshoplike tool listed in
+						extension list)
 					</li>
 				</ul>
 			</React.Fragment>
@@ -768,6 +778,6 @@ beautiful painting with highly detailed face by greg rutkowski and magali villan
 	};
 }
 
-const myArticles = [article_2, article_1];
+const myArticles = [article_1, article_2];
 
 export default myArticles;
