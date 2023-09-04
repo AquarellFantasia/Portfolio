@@ -78,7 +78,7 @@ function article_1() {
 function article_2() {
 	return {
 		date: "4 September 2023",
-		title: "Save 3000$ on hardware, by running Stable Diffusion setup on Google Cloud virtual machines for free",
+		title: "Save 5000$ on hardware, by running Stable Diffusion setup on Google Cloud virtual machines for free",
 		description:
 			"Step by step instruction on how install stable diffusion UIs on GCP and abuse the 300$ free credit that goofgle is giving out for newly registered users. Create images and train models, like a boss.",
 		style: `
