@@ -7,7 +7,7 @@
 		"email": "mail@tharindu.dev",
 		"url": "https://tharindu.dev"
 	},
-	"homepage": "/",
+	"homepage": "./",
 	"license": "MIT",
 	"private": true,
 	"dependencies": {
